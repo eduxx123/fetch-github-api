@@ -27,8 +27,6 @@ Tudo isso usando **JavaScript puro** e organizando o código em arquivos separad
 
 ## 📷 Veja o projeto funcionando:
 
-➡️ Aqui você pode adicionar um GIF ou imagem mostrando o projeto em ação:
-
 ![Animação 1 ](https://github.com/user-attachments/assets/5726b2ce-f11c-4666-a198-0336acd3c4f9)
 
 ---
