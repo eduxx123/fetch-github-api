@@ -2,23 +2,26 @@ import { buscarDados } from "./services/user.js"
 import { buscarRepositorios } from "./services/repositories.js"
 import { user } from "./objects/user.js"
 import { screen } from "./objects/screen.js"
+import { lastEvents } from "./services/events.js"
 
-// BUSCANDO A FOTO DE PERFIL, NOME E BIO DA API E ADICIONANDO-OS NO HTML
+
+// BUSCANDO A FOTO DE PERFIL, NOME, E BIO DA API, E ADICIONANDO-OS NO HTML
 async function criarHtml(userName) {
 
     const userResponse = await buscarDados(userName)
-
+    const repositoriesResponse = await buscarRepositorios(userName)
+    const eventsResponse = await lastEvents(userName)
+    
     // CÓDIGO PARA VERIFICAR SE O USUÁRIO DIGITOU UM NOME VÁLIDO
     if(userResponse.message === 'Not Found'){
         screen.renderNotFound()
         return
     }
 
-    const repositoriesResponse = await buscarRepositorios(userName)
-    
     user.setInfo(userResponse)  
     user.setRepostories(repositoriesResponse)
-
+    user.setEvents(eventsResponse)
+    
     screen.renderUser(user)
     
 }
@@ -48,5 +51,6 @@ function validateEmptyInput(userName){
         return true
     }
 }
+
 
 
